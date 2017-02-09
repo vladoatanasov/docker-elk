@@ -1,6 +1,6 @@
 FROM rabbitmq:3-management
 
-RUN apt-get update && apt-get install -y python
+RUN apt-get update && apt-get install -y python && apt-get install -y curl
 
 COPY rabbitmqadmin.py /tmp/rabbitmqadmin.py
 COPY entrypoint.sh /tmp/entrypoint.sh

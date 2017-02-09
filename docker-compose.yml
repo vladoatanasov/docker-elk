@@ -3,6 +3,8 @@ version: '2'
 services:
   rabbitmq:
     build: rabbitmq/
+    networks:
+      - docker_elk
     ports:
       - "4369:4369"
       - "5671:5671"
@@ -19,6 +21,8 @@ services:
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
     networks:
       - docker_elk
+    depends_on: 
+      - rabbitmq
   logstash:
     build: logstash/
     command: -f /etc/logstash/conf.d/
